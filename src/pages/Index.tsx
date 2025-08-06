@@ -4,8 +4,16 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import ProductCard from '@/components/ProductCard';
 import ContactForm from '@/components/ContactForm';
+import { useGSAPAnimation, useStaggerAnimation } from '@/hooks/useGSAPAnimation';
 
 const Index = () => {
+  // Animation refs
+  const heroTitleRef = useGSAPAnimation<HTMLHeadingElement>('slideInLeft', { delay: 0.2 });
+  const heroDescRef = useGSAPAnimation<HTMLParagraphElement>('slideInLeft', { delay: 0.4 });
+  const heroBtnRef = useGSAPAnimation<HTMLDivElement>('fadeIn', { delay: 0.6 });
+  const featuredSectionRef = useStaggerAnimation<HTMLDivElement>('.product-card', { delay: 0.2 });
+  const aboutSectionRef = useGSAPAnimation<HTMLDivElement>('fadeIn');
+
   // Sample featured products
   const featuredProducts = [
     {
@@ -13,21 +21,21 @@ const Index = () => {
       name: 'Golden Bites Box',
       description: 'Our signature vegan finger-food selection',
       price: 24.99,
-      image: 'https://images.unsplash.com/photo-1618160702438-9b02ab6515c9'
+      image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=600&fit=crop&crop=center'
     },
     {
       id: '2',
       name: 'Savory Party Pack',
       description: 'Perfect for gatherings and celebrations',
       price: 34.99,
-      image: 'https://images.unsplash.com/photo-1541959833400-049d37f98ccd'
+      image: 'https://images.unsplash.com/photo-1551782450-17144efb9c50?w=600&h=600&fit=crop&crop=center'
     },
     {
       id: '3',
       name: 'Spicy Delights',
       description: 'A kick of heat for the adventurous foodie',
       price: 26.99,
-      image: 'https://images.unsplash.com/photo-1599488394456-287f4e96f8fb'
+      image: 'https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=600&h=600&fit=crop&crop=center'
     }
   ];
 
@@ -35,25 +43,31 @@ const Index = () => {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="bg-brand-lightyellow relative overflow-hidden">
-        <div className="container min-h-[600px] md:min-h-[700px] flex flex-col justify-center py-16 relative z-10">
-          <div className="max-w-2xl animate-fade-in opacity-0 [animation-delay:0.2s]">
-            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-brand-brown">
+        <div className="container min-h-[500px] sm:min-h-[600px] md:min-h-[700px] flex flex-col justify-center py-12 sm:py-16 relative z-10">
+          <div className="max-w-2xl px-4 sm:px-0">
+            <h1 
+              ref={heroTitleRef}
+              className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 text-brand-brown will-change-transform leading-tight"
+            >
               Delicious Vegan Finger Food Delivered to Your Door
             </h1>
-            <p className="text-lg md:text-xl mb-8 text-gray-700">
+            <p 
+              ref={heroDescRef}
+              className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 text-gray-700 will-change-transform"
+            >
               Experience our secret recipe, crafted with care and delivered directly to your home. 
               Perfect for those seeking quality vegan options on a budget.
             </p>
-            <div className="flex flex-wrap gap-4">
+            <div ref={heroBtnRef} className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 will-change-transform">
               <Button 
-                className="bg-brand-yellow hover:bg-brand-brown text-brand-brown hover:text-white transition-colors text-lg px-8 py-6"
+                className="bg-brand-yellow hover:bg-brand-brown text-brand-brown hover:text-white transition-all duration-300 text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-6 transform hover:scale-105 active:scale-95"
                 asChild
               >
                 <Link to="/shop">Shop Now</Link>
               </Button>
               <Button 
                 variant="outline"
-                className="border-brand-brown text-brand-brown hover:bg-brand-brown hover:text-white transition-colors text-lg px-8 py-6"
+                className="border-brand-brown text-brand-brown hover:bg-brand-brown hover:text-white transition-all duration-300 text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-6 transform hover:scale-105 active:scale-95"
                 asChild
               >
                 <Link to="/contact">Contact Us</Link>
@@ -65,26 +79,28 @@ const Index = () => {
 
       {/* Featured Products Section */}
       <section className="section-padding bg-white">
-        <div className="container">
-          <div className="text-center mb-12">
-            <h2 className="font-serif text-3xl md:text-4xl font-bold mb-4">
+        <div className="container" ref={featuredSectionRef}>
+          <div className="text-center mb-8 sm:mb-12 px-4 sm:px-0">
+            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
               Our Featured Products
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
               Discover our most popular vegan finger foods, made with our secret recipe and 
               delivered fresh to your doorstep.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {featuredProducts.map(product => (
-              <ProductCard key={product.id} {...product} />
+              <div key={product.id} className="product-card">
+                <ProductCard {...product} />
+              </div>
             ))}
           </div>
           
-          <div className="text-center mt-12">
+          <div className="text-center mt-8 sm:mt-12">
             <Button 
-              className="bg-brand-brown hover:bg-opacity-90 text-white transition-colors"
+              className="bg-brand-brown hover:bg-opacity-90 text-white transition-all duration-300 transform hover:scale-105 active:scale-95 px-6 sm:px-8 py-3 sm:py-4"
               asChild
             >
               <Link to="/shop">View All Products</Link>
@@ -96,28 +112,29 @@ const Index = () => {
       {/* About Our Secret Recipe Section */}
       <section className="section-padding bg-brand-lightyellow">
         <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center" ref={aboutSectionRef}>
+            <div className="will-change-transform">
               <img 
-                src="https://images.unsplash.com/photo-1721322800607-8c38375eef04" 
-                alt="Our Secret Recipe" 
-                className="rounded-lg shadow-lg"
+                src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=400&fit=crop&crop=center" 
+                alt="Our Secret Recipe - Vegan cooking ingredients and process" 
+                className="rounded-lg shadow-lg w-full h-64 sm:h-80 md:h-full object-cover"
+                loading="lazy"
               />
             </div>
-            <div>
-              <h2 className="font-serif text-3xl md:text-4xl font-bold mb-6 text-brand-brown">
+            <div className="will-change-transform">
+              <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 text-brand-brown">
                 Our Secret Recipe
               </h2>
-              <p className="text-lg mb-6">
+              <p className="text-base sm:text-lg mb-4 sm:mb-6">
                 For generations, our family has perfected the art of creating delicious vegan finger food. 
                 Our secret recipe combines traditional techniques with innovative plant-based ingredients.
               </p>
-              <p className="text-lg mb-6">
+              <p className="text-base sm:text-lg mb-4 sm:mb-6">
                 We're passionate about making high-quality vegan food accessible to everyone, regardless of budget. 
                 That's why we've created a product that's both affordable and exceptionally delicious.
               </p>
               <Button 
-                className="bg-brand-yellow hover:bg-brand-brown text-brand-brown hover:text-white transition-colors"
+                className="bg-brand-yellow hover:bg-brand-brown text-brand-brown hover:text-white transition-all duration-300 transform hover:scale-105 active:scale-95 w-full sm:w-auto"
                 asChild
               >
                 <Link to="/blog">Read Our Story</Link>

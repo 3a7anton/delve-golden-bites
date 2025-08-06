@@ -1,73 +1,106 @@
-# Welcome to your Lovable project
+# Golden Bites - Vegan Food Delivery 🌱
 
-## Project info
+**Author:** ABU AHAD ANTON (3a7anton)
 
-**URL**: https://lovable.dev/projects/60a6336f-557a-4403-8bbb-41632c3f090e
+A modern, responsive vegan food delivery website built with React, TypeScript, and Vite. Featuring smooth scrolling animations powered by GSAP and Lenis.
 
-## How can I edit this code?
+🌐 **Live Demo:** [https://delve-golden-bites.netlify.app/](https://delve-golden-bites.netlify.app/)
 
-There are several ways of editing your application.
+## ✨ Features
 
-**Use Lovable**
+- 🌱 **Vegan Food Focus** - Carefully curated selection of delicious vegan meals
+- 📱 **Fully Responsive Design** - Optimized for all devices (mobile, tablet, desktop)
+- 🌟 **Smooth Animations** - GSAP-powered scroll animations and micro-interactions
+- 🛍️ **Product Showcase** - Interactive product cards with hover effects and filtering
+- 📝 **Contact Form** - Functional contact form with validation
+- ⚡ **Fast Performance** - Built with Vite for lightning-fast loading
+- 🎨 **Modern UI** - Clean design with Tailwind CSS and shadcn/ui components
+- 🚀 **Smooth Scrolling** - Lenis integration for buttery smooth navigation
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/60a6336f-557a-4403-8bbb-41632c3f090e) and start prompting.
+## 🛠️ Tech Stack
 
-Changes made via Lovable will be committed automatically to this repo.
+- **Frontend:** React 18, TypeScript
+- **Styling:** Tailwind CSS
+- **Build Tool:** Vite
+- **Animations:** GSAP, Lenis (smooth scrolling)
+- **UI Components:** shadcn/ui
+- **Package Manager:** Bun
+- **Deployment:** Netlify
 
-**Use your preferred IDE**
+## 📁 Project Structure
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```
+src/
+├── components/          # Reusable UI components
+│   ├── ui/             # shadcn/ui components
+│   ├── Navbar.tsx      # Navigation component
+│   ├── Footer.tsx      # Footer component
+│   ├── ProductCard.tsx # Product display component with animations
+│   ├── BlogPostCard.tsx# Blog post component
+│   ├── ContactForm.tsx # Contact form component
+│   └── SmoothScrollProvider.tsx # Smooth scroll wrapper
+├── pages/              # Page components
+│   ├── Index.tsx       # Home page with hero section
+│   ├── Shop.tsx        # Products page with filtering
+│   ├── Blog.tsx        # Blog page
+│   ├── Contact.tsx     # Contact page
+│   └── NotFound.tsx    # 404 page
+├── hooks/              # Custom React hooks
+│   ├── useGSAPAnimation.ts # GSAP animation hooks
+│   ├── useSmoothScroll.ts  # Smooth scrolling hook
+│   └── use-mobile.tsx      # Mobile detection hook
+├── lib/                # Utility functions
+│   ├── utils.ts        # General utilities
+│   └── animations.ts   # GSAP animation helpers
+└── App.tsx             # Main application component
 ```
 
-**Edit a file directly in GitHub**
+## 🚀 Getting Started
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/3a7anton/delve-golden-bites.git
+   cd delve-golden-bites
+   ```
 
-**Use GitHub Codespaces**
+2. **Install dependencies:**
+   ```bash
+   bun install
+   ```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+3. **Start development server:**
+   ```bash
+   bun run dev
+   ```
 
-## What technologies are used for this project?
+4. **Build for production:**
+   ```bash
+   bun run build
+   ```
 
-This project is built with:
+5. **Preview production build:**
+   ```bash
+   bun run preview
+   ```
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## 🎨 Design Highlights
 
-## How can I deploy this project?
+- **Brand Colors:** Warm golden tones (#F59E0B, #FCD34D) representing quality and natural ingredients
+- **Typography:** Clean, modern fonts with excellent readability
+- **Animations:** Subtle, performance-optimized GSAP animations that enhance UX
+- **Mobile-First:** Responsive design ensuring great experience across all devices
+- **Accessibility:** Built with semantic HTML and ARIA labels for screen readers
 
-Simply open [Lovable](https://lovable.dev/projects/60a6336f-557a-4403-8bbb-41632c3f090e) and click on Share -> Publish.
+## 📄 License
 
-## Can I connect a custom domain to my Lovable project?
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-Yes, you can!
+## 🤝 Contributing
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+## 📞 Contact
+
+**ABU AHAD ANTON**
+- GitHub: [@3a7anton](https://github.com/3a7anton)
+- Website: [https://delve-golden-bites.netlify.app/](https://delve-golden-bites.netlify.app/)

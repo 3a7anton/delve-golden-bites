@@ -75,12 +75,68 @@
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: auto;
+  }
+
   body {
     @apply bg-background text-foreground font-sans;
+    /* Prevent default smooth scrolling to let Lenis handle it */
+    scroll-behavior: auto;
   }
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-serif;
+  }
+}
+
+/* Smooth scroll utilities */
+@layer utilities {
+  .will-change-transform {
+    will-change: transform;
+  }
+  
+  .gpu-accelerated {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+
+  /* Line clamp utility for text truncation */
+  .line-clamp-2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .line-clamp-3 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+
+  /* Mobile-first responsive utilities */
+  @media (max-width: 640px) {
+    .container {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+  }
+
+  /* Improved focus states for accessibility */
+  .focus-visible\:ring-brand-yellow:focus-visible {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 2px hsl(48 100% 50%);
+  }
+
+  /* Animation performance improvements */
+  .animate-optimized {
+    transform: translateZ(0);
+    will-change: transform;
+    backface-visibility: hidden;
   }
 }
 
